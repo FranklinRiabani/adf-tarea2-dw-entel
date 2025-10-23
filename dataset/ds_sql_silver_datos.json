@@ -42,14 +42,14 @@
 			{
 				"name": "latitud",
 				"type": "decimal",
-				"precision": 18,
-				"scale": 0
+				"precision": 10,
+				"scale": 7
 			},
 			{
 				"name": "longitud",
 				"type": "decimal",
-				"precision": 18,
-				"scale": 0
+				"precision": 10,
+				"scale": 7
 			},
 			{
 				"name": "subidos",
