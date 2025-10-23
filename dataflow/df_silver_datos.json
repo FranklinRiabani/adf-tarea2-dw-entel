@@ -29,6 +29,9 @@
 				},
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "cast1"
 				}
 			],
 			"scriptLines": [
@@ -65,7 +68,12 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> a06",
 				"a05, a06 union(byName: true)~> union1",
-				"union1 derive(Latitud = substring(latitud_longitud, 0, instr(latitud_longitud, \",-\")-1)) ~> derivedColumn1"
+				"union1 derive(Latitud = substring(latitud_longitud, 0, instr(latitud_longitud, \",-\")-1),",
+				"          longitud = substring(latitud_longitud,instr(latitud_longitud, \",-\")+1,length(latitud_longitud))) ~> derivedColumn1",
+				"derivedColumn1 cast(output(",
+				"          fecha_inicio as timestamp 'MM-dd-yyyy HH:mm:ss'",
+				"     ),",
+				"     errors: true) ~> cast1"
 			]
 		}
 	}
